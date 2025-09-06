@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authService } from '../../services/authService';
+import { bookRide } from '../../services/formService';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -13,6 +14,7 @@ const Dashboard = () => {
   };
   const [booking, setBooking] = useState({
     location: '',
+    dropoffLocation: '',
     carType: '',
     pickupDate: '',
     pickupTime: '',
@@ -25,9 +27,32 @@ const Dashboard = () => {
     setBooking((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    alert('Search submitted! We will show available cars based on your criteria.');
+
+    // Map UI fields to backend schema
+    const pickupDateTime = `${booking.pickupDate}T${booking.pickupTime}:00`;
+    const returnDateTime = booking.returnDate && booking.returnTime
+      ? `${booking.returnDate}T${booking.returnTime}:00`
+      : null;
+
+    const payload = {
+      pickupLocation: booking.location,
+      dropoffLocation: booking.dropoffLocation || null,
+      pickupDateTime,
+      returnDateTime,
+      carType: booking.carType || null,
+      fullName: (user && (user.username || user.fullName)) || null,
+      email: (user && user.email) || null,
+    };
+
+    try {
+      const saved = await bookRide(payload);
+      alert('Booking submitted and stored! ID: ' + saved.id);
+    } catch (err) {
+      console.error('Failed to store booking', err);
+      alert('Failed to store booking. Please ensure backend is running and try again.');
+    }
   };
 
   useEffect(() => {
@@ -101,6 +126,10 @@ const Dashboard = () => {
                   <div className="form-group">
                     <label htmlFor="location">Location</label>
                     <input id="location" name="location" type="text" placeholder="City or Airport" value={booking.location} onChange={handleChange} required />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="dropoffLocation">Dropoff location</label>
+                    <input id="dropoffLocation" name="dropoffLocation" type="text" placeholder="Where to drop" value={booking.dropoffLocation} onChange={handleChange} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="carType">Car type</label>
