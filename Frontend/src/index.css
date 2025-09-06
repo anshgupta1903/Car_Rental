@@ -5,8 +5,8 @@
 }
 
 :root {
-  --primary-color: #3b82f6;
-  --primary-hover: #2563eb;
+  --primary-color: #6366f1; /* indigo-500 */
+  --primary-hover: #4f46e5; /* indigo-600 */
   --secondary-color: #64748b;
   --success-color: #10b981;
   --error-color: #ef4444;
