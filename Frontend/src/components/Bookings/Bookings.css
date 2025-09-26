@@ -1,0 +1,370 @@
+.bookings-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.bookings-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.bookings-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.bookings-header p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.error,
+.no-bookings {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.error h2,
+.no-bookings h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.error p,
+.no-bookings p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.error-message {
+  background: var(--danger-color, #dc3545);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.login-btn,
+.browse-cars-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover,
+.browse-cars-btn:hover {
+  background: var(--primary-hover);
+}
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.booking-card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+.booking-header {
+  background: var(--primary-color);
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.booking-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.status.confirmed {
+  background: var(--success-color, #28a745);
+}
+
+.status.cancelled {
+  background: var(--danger-color, #dc3545);
+}
+
+.status.completed {
+  background: var(--info-color, #17a2b8);
+}
+
+.booking-details {
+  padding: 2rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  width: 150px;
+}
+
+.value {
+  text-align: right;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.value.amount {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.bookings-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.browse-more-btn,
+.back-btn {
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.browse-more-btn {
+  background: var(--primary-color);
+  color: white;
+}
+
+.browse-more-btn:hover {
+  background: var(--primary-hover);
+}
+
+.back-btn {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.back-btn:hover {
+  background: var(--bg-secondary);
+  border-color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bookings-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .bookings-header h1 {
+    font-size: 2rem;
+  }
+  
+  .booking-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .booking-details {
+    padding: 1.5rem;
+  }
+  
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .label {
+    width: auto;
+  }
+  
+  .value {
+    text-align: left;
+  }
+  
+  .bookings-actions {
+    flex-direction: column;
+  }
+  
+  .browse-more-btn,
+  .back-btn {
+    width: 100%;
+  }
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .bookings-container {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --border-color: #334155;
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+}
+
+[data-theme="light"] .bookings-container {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+}
+
+/* Enhanced Car Details Section */
+.car-info-section,
+.booking-info-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-primary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.car-image {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.car-image img {
+  max-width: 300px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.car-details-grid,
+.booking-details-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.features {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.feature-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.feature-tag {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Status badges */
+.status.pending {
+  background: var(--warning-color, #ffc107);
+  color: #000;
+}
+
+.status.approved {
+  background: var(--success-color, #28a745);
+}
+
+.status.rejected {
+  background: var(--danger-color, #dc3545);
+}
+
+@media (max-width: 768px) {
+  .car-info-section,
+  .booking-info-section {
+    padding: 1rem;
+  }
+  
+  .car-image img {
+    max-width: 250px;
+    height: 150px;
+  }
+  
+  .features {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .feature-tags {
+    justify-content: flex-start;
+  }
+}
