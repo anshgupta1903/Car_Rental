@@ -26,16 +26,17 @@
     ]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
-  "proxy": "http://localhost:8081"
+  "proxy": "http://localhost:8081",
+  "description": "A beautiful, responsive React frontend for the CarRental application with authentication, light/dark mode, and clean code organization.",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
